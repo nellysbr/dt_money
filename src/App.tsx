@@ -1,26 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Modal from 'react-modal';
+import { Dashboard } from './components/Dashboard';
+import { Header } from './components/Header';
+import { TransactionsTable } from './components/TransactionsTable';
+import { GlobalStyle } from './styles/global';
+import { useState } from 'react';
+import { NewTransactionModal } from './components/NewTransactionModal';
 
-function App() {
+// const Title = styled.h1`
+//   color: #8257e6;
+//   font-size: 64px;
+
+//   button{
+//      border-radius: 8px;
+//      background-color: #8257e6;
+//   }
+//   button:hover{
+//     background-color: #fff;
+//     color: black;  
+//   }
+// `
+
+Modal.setAppElement('#root');
+
+
+export function App() {
+
+  const [modalState, setModalState] = useState(false);
+
+  function handleToggleModal(){
+      setModalState(true);
+  }
+  function handleModalClose(){
+      setModalState(false);
+  }
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      
+      <Header onOpenNewTransactionModal={handleToggleModal} />
+      <Dashboard />
+
+      <NewTransactionModal isOpen={modalState} onRequestClose={handleModalClose} />
+ 
+      <TransactionsTable />
+      <GlobalStyle />
+
+      
+      
+    </>
   );
 }
 
-export default App;
+
