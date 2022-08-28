@@ -3,7 +3,7 @@
 
  export const Container = styled.div`
 
-    display: grid; // pq sao 3 itens, um do lado outro e de mesmo tamanho (melhor pra essas situacoes)
+    display: grid; // pq sao 3 itens, um do lado outro e de mesmo tamanho (melhor pra essas situacoes) teste ssh
     grid-template-columns: repeat(3, 1fr); // 3 colunas com 1 tamanho flexivel em todas elas - 1fr = 1 colunas
     gap: 2rem;
     margin-top: -10rem;
