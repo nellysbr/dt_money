@@ -4,6 +4,7 @@ import { Header } from './components/Header';
 import { TransactionsTable } from './components/TransactionsTable';
 import { GlobalStyle } from './styles/global';
 import { useState } from 'react';
+
 import { NewTransactionModal } from './components/NewTransactionModal';
 
 // const Title = styled.h1`
@@ -25,25 +26,26 @@ Modal.setAppElement('#root');
 
 export function App() {
 
-  const [modalState, setModalState] = useState(false);
+  const [isNewTransactionModalOpen, setNewTransactionModal] = useState(false);
 
-  function handleToggleModal(){
-      setModalState(true);
-  }
-  function handleModalClose(){
-      setModalState(false);
+  function handleOpenNewTransactionModal() {
+      setNewTransactionModal(true);
   }
 
+  function handleCloseNewTransactionModal() {
+      setNewTransactionModal(false);
+  }
 
 
   return (
     <>
       
-      <Header onOpenNewTransactionModal={handleToggleModal} />
+      <Header onOpenNewTransactionModal={handleOpenNewTransactionModal}/>
       <Dashboard />
 
-      <NewTransactionModal isOpen={modalState} onRequestClose={handleModalClose} />
- 
+      <NewTransactionModal isOpen={isNewTransactionModalOpen} onRequestClose={handleCloseNewTransactionModal} />
+                    
+               
       <TransactionsTable />
       <GlobalStyle />
 
