@@ -4,6 +4,7 @@ import { Header } from './components/Header';
 import { TransactionsTable } from './components/TransactionsTable';
 import { GlobalStyle } from './styles/global';
 import { useState } from 'react';
+import { TransactionsProvider } from './hooks/useTransactions';
 
 import { NewTransactionModal } from './components/NewTransactionModal';
 
@@ -38,7 +39,7 @@ export function App() {
 
 
   return (
-    <>
+    <TransactionsProvider>
       
       <Header onOpenNewTransactionModal={handleOpenNewTransactionModal}/>
       <Dashboard />
@@ -51,7 +52,7 @@ export function App() {
 
       
       
-    </>
+    </TransactionsProvider>
   );
 }
 
