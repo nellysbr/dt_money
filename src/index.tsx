@@ -35,6 +35,8 @@ createServer({
     });
 
   },
+
+  //fiz um comentario / teste duvakin
   routes(){
     this.namespace = 'api';
     this.get('/transactions', () => {
